@@ -1,0 +1,28 @@
+﻿@using vidly.Models
+@model Customers
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<p>
+
+    Customer Name: @Model.Name
+</p>
+<p>
+    Customer Code = @Model.CustomerID
+</p>
+
+    @if (!string.IsNullOrWhiteSpace(Model.birthday))
+    {
+        <p>
+            Customer birthday:@Model.birthday
+        </p>
+            
+
+    }
+
+
+
+

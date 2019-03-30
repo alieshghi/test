@@ -1,0 +1,13 @@
+﻿@using vidly.Models
+@model Movie
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>movie Details</h2>
+<p class="label">Movie Name= @Model.Name</p>
+@if (!string.IsNullOrWhiteSpace(Model.RelaseDay.ToString()))
+{
+    <p class="label">Movie released date= @Model.RelaseDay</p>
+}
