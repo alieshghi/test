@@ -1,0 +1,68 @@
+﻿@using vidly.Models
+@model IEnumerable <Customers>
+    
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+
+@*@if (!Model.Any())
+{
+    <p> there is no customer</p>
+
+}
+else
+{
+    *@ 
+    <table id="Customers" class=" table-hover table table-bordered"> @*table table-bordered*@
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Membership type</th>
+                
+                
+            </tr>
+        </thead>
+
+        <tbody>
+         
+    </tbody>
+</table>
+
+@section scripts
+    
+    {
+<script>
+    $(document).ready(function () {
+        var table= $("#Customers").DataTable({
+
+            ajax: {
+                url: "/api/customer",
+                dataSrc: ""
+            },
+
+           columns: [
+                {
+                data: "name",
+               
+
+            },
+
+            {
+                data: "membershipType.membershipName",
+               
+            }   
+
+           ]
+        });
+
+      
+       
+
+    
+    });
+</script>
+    }

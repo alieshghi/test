@@ -1,0 +1,90 @@
+﻿@using Microsoft.AspNet.Identity
+@*<div class="topcorner">
+   
+    <style type="text/css">
+        .topcorner {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    </style>
+   
+</div>
+<div class="topcorner2">
+
+    <style type="text/css">
+        .topcorner2 {
+            position:  absolute;
+            top: 0;
+            right:50px;
+        }
+    </style>
+
+</div>
+<div class="LoginNameShown">
+
+    <style type="text/css">
+        .LoginNameShown {
+            position: absolute;
+            top: 0;
+            right: 165px;
+        }
+    </style>
+
+</div>*@
+
+<div class="navbar navbar-inverse  navbar-fixed-top">
+    
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+           @* @Html.ActionLink("Vidly", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+            @Html.ActionLink("Vidly", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Customers", "Index", "customer", new { area = "" }, new { @class =  "navbar-brand" })
+            @Html.ActionLink("Movies", "Moviegenr", "Movies", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Rent Movie","New","NewRental", new { area = "" }, new { @class = "navbar-brand" })
+          @*  @Html.ActionLink("Register", "Register", "Account", new { area = "" }, new { @class = "navbar-brand topcorner2" })*@
+          @* @Html.ActionLink("LogOff", "LogOff", "Account",new {area="" },new { @class = "LoginNameShown" })*@
+     
+            
+            
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Movies","Random","Movies")</li>
+                
+            </ul>
+        </div>
+        @if (Request.IsAuthenticated)
+        {
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        
+                        <a><span style="color:blue"> Hello @User.Identity.GetUserName() ! </span></a>
+                    </li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                </ul>
+            }
+        }
+        else
+        {
+            @*<ul class="nav navbar-nav navbar-right">
+                <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+            </ul>*@
+            <div class="nav navbar-nav navbar-right">
+                @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+                @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+            </div>
+        }
+    </div>
+</div>
+
